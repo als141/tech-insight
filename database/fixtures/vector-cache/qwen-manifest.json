@@ -1,0 +1,10 @@
+{
+  "cache_version": "v2-normalized-ip",
+  "provider": "qwen",
+  "model": "Qwen/Qwen3-Embedding-0.6B",
+  "dimension": 768,
+  "dataset_hash": "725a505762720a9c615ba31c036f0044895639e2b98fd27ec38f630bd024018a",
+  "count": 1000,
+  "unique_count": 449,
+  "normalized": true
+}

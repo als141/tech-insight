@@ -1,0 +1,73 @@
+[project]
+name = "techinsight-backend"
+version = "0.1.0"
+description = "TechInsight backend service"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.115.0",
+  "httpx>=0.28.0",
+  "numpy>=2.2.4",
+  "pgvector>=0.4.1",
+  "psycopg[binary]>=3.2.6",
+  "pydantic-settings>=2.8.1",
+  "python-dateutil>=2.9.0.post0",
+  "python-dotenv>=1.1.0",
+  "sentence-transformers>=5.4.0",
+  "sqlalchemy>=2.0.40",
+  "torch>=2.11.0",
+  "uvicorn[standard]>=0.34.0",
+]
+
+[project.scripts]
+techinsight-bootstrap = "techinsight.tasks.bootstrap:main"
+techinsight-package-vectors = "techinsight.tasks.package_vectors:main"
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.15.0",
+  "pytest>=8.3.5",
+  "ruff>=0.11.5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[[tool.uv.index]]
+url = "https://download.pytorch.org/whl/cpu"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/techinsight"]
+
+[[tool.uv.index]]
+url = "https://pypi.org/simple"
+default = true
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"src/techinsight/api/routes.py" = ["B008"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+plugins = []
+
+[dependency-groups]
+dev = [
+    "mypy>=1.20.0",
+    "pytest>=9.0.3",
+    "ruff>=0.15.9",
+]

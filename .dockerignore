@@ -1,0 +1,15 @@
+.env
+.env.local
+.git
+backend/.git
+frontend/.git
+backend/.venv
+backend/.pytest_cache
+backend/.mypy_cache
+backend/.ruff_cache
+backend/.cache
+frontend/.next
+frontend/node_modules
+database/postgres-data
+database/vector-cache
+database/model-cache
